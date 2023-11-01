@@ -1,4 +1,8 @@
-import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios"
+import type {
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig
+} from 'axios'
 
 interface Zinterceptors<T> {
   requestSuccess?: (
@@ -8,6 +12,7 @@ interface Zinterceptors<T> {
   responseSuccess?: (res: T) => T
   responseError?: (err: any) => void
 }
-export default interface ZRequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
+export default interface ZRequestConfig<T = AxiosResponse>
+  extends AxiosRequestConfig {
   interceptors?: Zinterceptors<T>
 }
