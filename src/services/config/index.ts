@@ -8,7 +8,7 @@
 // } else {
 //   BASE_URL = 'http://codercba.com:9003'
 // }
-const BASE_URL = process.env.REACT_APP_API_URL
+const BASE_URL = process.env.REACT_APP_BASE_URL
 export const TIMEOUT = 10000
 export const HEADERS = {
   'Content-Type': 'application/json'
