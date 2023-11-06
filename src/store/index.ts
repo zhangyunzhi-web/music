@@ -14,7 +14,7 @@ const store = configureStore({
 type GetStateType = typeof store.getState
 export type StateReturnType = ReturnType<GetStateType>
 
-type DispatchType = typeof store.dispatch
-export type DispatchReturnType = ReturnType<DispatchType>
+export type DispatchType = typeof store.dispatch
+// export type DispatchReturnType = ReturnType<DispatchType>
 
 export default store

@@ -1,13 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getBanners } from '../servies'
 
-export const fetchRecommend = createAsyncThunk('banners', async () => {
-  const res = await getBanners()
-  console.log('🚀 ~ file: index.ts:6 ~ fetchRecommend ~ res:', res)
-  return res.banners
-})
+export const fetchRecommend = createAsyncThunk(
+  'banners',
+  async (arg, { dispatch }) => {
+    const res = await getBanners()
+    dispatch(changeBannersAction(res.banners))
+  }
+)
 interface IRecommendState {
-  banners: string[]
+  banners: any[]
 }
 const initialState: IRecommendState = {
   banners: []
@@ -16,18 +18,16 @@ const initialState: IRecommendState = {
 const RecommendSlice = createSlice({
   name: 'recommend',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchRecommend.pending, () => {
-        console.log('pending')
-      })
-      .addCase(fetchRecommend.fulfilled, (state, { payload }) => {
-        state.banners = payload
-      })
-      .addCase(fetchRecommend.rejected, () => {
-        console.log('rejected')
-      })
+  reducers: {
+    changeBannersAction(state, { payload }) {
+      console.log(
+        '🚀 ~ file: index.ts:27 ~ changeBannersAction ~ payload:',
+        state
+      )
+      // 修改state
+      state.banners = payload
+    }
   }
 })
+export const { changeBannersAction } = RecommendSlice.actions
 export default RecommendSlice.reducer
