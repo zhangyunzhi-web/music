@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
-
-import zRequest from '@/services'
+import { fetchRecommend } from './store'
+import { useAppDispatch } from '@/store/hooks'
 interface IProps {
   children?: ReactNode
 }
@@ -36,15 +36,9 @@ export interface IBanner {
 
 const Recommand: FC<IProps> = memo(() => {
   const [banners, setBanners] = useState<IBanner[]>([])
+  const dispatch = useAppDispatch()
   useEffect(() => {
-    zRequest
-      .get({
-        url: '/banner'
-      })
-      .then((res) => {
-        console.log('🚀 ~ file: index.tsx:16 ~ .then ~ res:', res)
-        setBanners(res.banners)
-      })
+    dispatch(fetchRecommend())
   }, [])
   return (
     <div>
