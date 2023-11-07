@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import { shallowEqual } from 'react-redux'
 import { useAppSelector } from '@/store/hooks'
-
+import BannerWrapper from './style'
 interface IProps {
   children?: ReactNode
 }
@@ -15,7 +15,7 @@ const Banner: FC<IProps> = memo(() => {
     shallowEqual
   )
   return (
-    <div>
+    <BannerWrapper>
       <ul>
         {banners.map((item) => {
           return (
@@ -25,7 +25,7 @@ const Banner: FC<IProps> = memo(() => {
           )
         })}
       </ul>
-    </div>
+    </BannerWrapper>
   )
 })
 
