@@ -3,6 +3,7 @@ import type { FC, ReactNode } from 'react'
 import { shallowEqual } from 'react-redux'
 import { useAppSelector } from '@/store/hooks'
 import BannerWrapper from './style'
+import { Carousel } from 'antd'
 interface IProps {
   children?: ReactNode
 }
@@ -16,15 +17,15 @@ const Banner: FC<IProps> = memo(() => {
   )
   return (
     <BannerWrapper>
-      <ul>
+      <Carousel autoplay autoplaySpeed={1500}>
         {banners.map((item) => {
           return (
-            <li key={item.imageUrl}>
+            <a href={item.url} key={item.imageUrl}>
               <img src={item.imageUrl} alt="" />
-            </li>
+            </a>
           )
         })}
-      </ul>
+      </Carousel>
     </BannerWrapper>
   )
 })

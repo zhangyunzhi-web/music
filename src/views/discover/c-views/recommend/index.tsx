@@ -38,7 +38,6 @@ export interface IBanner {
 const Recommand: FC<IProps> = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
-    console.log(fetchRecommend(), 'fetchRecommend()')
     dispatch(fetchRecommend())
   }, [])
   return (
